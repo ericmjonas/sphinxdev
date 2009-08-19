@@ -267,7 +267,7 @@ class Sphinx(object):
             if key == 'html':
                 from sphinx.writers.html import HTMLTranslator as translator
             elif key == 'latex':
-                from sphinx.writers.latex import LaTeXTranslator as translator
+                from sphinx.writers.latexnaked import LaTeXTranslator as translator
             elif key == 'text':
                 from sphinx.writers.text import TextTranslator as translator
             else:

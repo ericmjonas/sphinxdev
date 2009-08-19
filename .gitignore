@@ -1,0 +1,4 @@
+build/
+Sphinx.egg*
+dist/*
+*.pyc

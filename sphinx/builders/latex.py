@@ -22,7 +22,7 @@ from sphinx.util import SEP, texescape, copyfile
 from sphinx.builders import Builder
 from sphinx.environment import NoUri
 from sphinx.util.console import bold, darkgreen
-from sphinx.writers.latex import LaTeXWriter
+from sphinx.writers.latexnaked import LaTeXWriter
 
 
 class LaTeXBuilder(Builder):
