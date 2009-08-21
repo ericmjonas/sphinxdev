@@ -249,8 +249,8 @@ class LaTeXTranslator(nodes.NodeVisitor):
         self.compact_list = 0
 
     def astext(self):
-        return (self.highlighter.get_stylesheet() + \
-                u''.join(self.body))
+        return u''.join(self.body) # (# self.highlighter.get_stylesheet() + \
+    # u''.join(self.body))
 
 ##         return (HEADER % self.elements + self.highlighter.get_stylesheet() +
 ##                 u''.join(self.body) + FOOTER % self.elements)
@@ -931,7 +931,11 @@ class LaTeXTranslator(nodes.NodeVisitor):
                 align = '\\begin{flush%s}' % node.attributes['align']
                 align_end = '\\end{flush%s}' % node.attributes['align']
             self.body.append('\\begin{figure}[htbp]%s\n' % align)
-            self.context.append('%s\\end{figure}\n' % align_end)
+            if node.has_key('label'):
+                print "NODE HAS LABEL", node['label']
+                self.context.append('%s\n\\label{%s}\n\\end{figure}\n' % (align_end, node['label']))
+            else:
+                self.context.append('%s\\end{figure}\n' % align_end)
     def depart_figure(self, node):
         self.body.append(self.context.pop())
 
